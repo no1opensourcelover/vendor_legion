@@ -213,6 +213,9 @@ DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 # Versioning
 -include vendor/legion/config/version.mk
 
+# Include Potato volume panels
+include packages/apps/Plugins/plugins.mk
+
 # Bootanimation
 -include vendor/legion/bootanimation/bootanimation.mk
 
