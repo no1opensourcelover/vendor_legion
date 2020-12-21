@@ -187,9 +187,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/legion/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 
-# Inherit Faceunlock
--include external/motorola/faceunlock/config.mk)
-
+#Uncatogerised
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/legion/config/partner_gms.mk
 
@@ -199,10 +197,11 @@ DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 # Bootanimation
 -include vendor/legion/bootanimation/bootanimation.mk
 
-# Gapps
+# Gapps/faceunlock
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
+$(call inherit-product-if-exists, external/motorola/faceunlock/config.mk)
 ifeq ($(WITH_GAPPS), true)
--include vendor/gapps/common/common-vendor.mk
+-include vendor/google/gms/config.mk
 endif
 endif
 
