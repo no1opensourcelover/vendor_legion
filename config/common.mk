@@ -201,7 +201,7 @@ DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
 $(call inherit-product-if-exists, external/motorola/faceunlock/config.mk)
 ifeq ($(WITH_GAPPS), true)
--include vendor/google/gms/config.mk
+-include vendor/google/gms/gms-vendor.mk
 endif
 endif
 
