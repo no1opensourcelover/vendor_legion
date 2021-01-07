@@ -15,15 +15,15 @@
 ANDROID_VERSION := 11.0
 LEGIONVERSION := v3.5
 
-LEGION_BUILD_TYPE ?= Unofficial
+LEGION_BUILD_TYPE ?= UNOFFICIAL
 LEGION_BUILD_DATE := $(shell date +%Y%m%d-%H%M)
 TARGET_PRODUCT_SHORT := $(subst legion_,,$(LEGION_BUILD))
 
 # ZIP TYPE
 ifeq ($(WITH_GAPPS), true)
-LEGION_BUILD_ZIP_TYPE := Gapps
+LEGION_BUILD_ZIP_TYPE := GAPPS
 else
-LEGION_BUILD_ZIP_TYPE := Vanilla
+LEGION_BUILD_ZIP_TYPE := VANILLA
 endif
 
 # OFFICIAL_DEVICES
@@ -36,8 +36,8 @@ ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
 endif
 
 ifneq ($(IS_OFFICIAL), true)
-LEGION_BUILD_TYPE := Unofficial
-$(error Device is not official "$(LEGION_BUILD)")
+LEGION_BUILD_TYPE := UNOFFICIAL
+$(error Device is not OFFICIAL "$(LEGION_BUILD)")
 endif
 endif
 
