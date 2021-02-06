@@ -95,6 +95,11 @@ PRODUCT_PACKAGES += \
     Updater
 endif
 
+# StitchImage
+PRODUCT_PACKAGES += \
+    StitchImage \
+    StitchImageService \
+
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet
