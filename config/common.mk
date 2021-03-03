@@ -202,6 +202,10 @@ DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 # Bootanimation
 -include vendor/legion/bootanimation/bootanimation.mk
 
+# IORap app launch prefetching using Perfetto traces and madvise
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.iorapd.enable=true
+
 # Gapps/faceunlock
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
 $(call inherit-product-if-exists, external/motorola/faceunlock/config.mk)
