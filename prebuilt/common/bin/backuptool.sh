@@ -6,26 +6,29 @@
 export C=/tmp/backupdir
 export SYSDEV="$(readlink -nf "$2")"
 export SYSFS="$3"
-export V=18.0
+export V=11
 
 # Scripts in /system/addon.d expect to find backuptool.functions in /tmp
 cp -f /tmp/install/bin/backuptool.functions /tmp
 
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
+  echo "Preserve addon"
   if [ -d $S/addon.d/ ]; then
-    mkdir -p /tmp/addon.d/
-    cp -a $S/addon.d/* /tmp/addon.d/
+    mkdir -v -p /tmp/addon.d/
+    cp -v -a $S/addon.d/* /tmp/addon.d/
     chmod 755 /tmp/addon.d/*.sh
   fi
 }
 
 # Restore /system/addon.d from /tmp/addon.d
 restore_addon_d() {
+  echo "Restore addon"
   if [ -d /tmp/addon.d/ ]; then
-    mkdir -p $S/addon.d/
-    cp -a /tmp/addon.d/* $S/addon.d/
-    rm -rf /tmp/addon.d/
+    mkdir -v -p $S/addon.d/
+    echo -v -a /tmp/addon.d/* $S/addon.d/
+    cp -v -a /tmp/addon.d/* $S/addon.d/
+    ls -ls $S/addon.d/
   fi
 }
 
@@ -36,7 +39,7 @@ if [ ! -r $S/build.prop ]; then
   echo "Backup/restore is not possible. Partition is probably empty"
   return 1
 fi
-if ! grep -q "^ro.legion.version=$V.*" $S/build.prop; then
+if ! grep -q "^ro.build.version.release=$V.*" $S/build.prop; then
   echo "Backup/restore is not possible. Incompatible ROM version: $V"
   return 2
 fi
@@ -47,6 +50,7 @@ return 0
 run_stage() {
 if [ -d /tmp/addon.d/ ]; then
   for script in $(find /tmp/addon.d/ -name '*.sh' |sort -n); do
+    echo "Backup/Restore: $script $1"
     $script $1
   done
 fi
@@ -62,7 +66,8 @@ determine_system_mount() {
   elif [ -d /system_root ]; then
     SYSMOUNT="/system_root"
   else
-    SYSMOUNT="/system"
+    mkdir -v -p "/system_root"
+    SYSMOUNT="/system_root"
   fi
 
   export S=$SYSMOUNT/system

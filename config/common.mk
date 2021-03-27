@@ -18,6 +18,10 @@ else
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
+# Clean cache
+PRODUCT_COPY_FILES += \
+    vendor/legion/prebuilt/common/bin/clean_cache.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/clean_cache.sh
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/legion/prebuilt/common/bin/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/install/bin/backuptool.sh \
@@ -30,6 +34,10 @@ PRODUCT_COPY_FILES += \
     vendor/legion/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
     vendor/legion/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 endif
+
+# Mount system
+PRODUCT_COPY_FILES += \
+    vendor/legion/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
