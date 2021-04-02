@@ -103,6 +103,11 @@ PRODUCT_PACKAGES += \
 
 # Updater
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
+
+PRODUCT_GENERIC_PROPERTIES += \
+    ro.legion.ziptype=$(LEGION_BUILD_ZIP_TYPE) \
+    sys.ota.disable_uncrypt=1
+
 PRODUCT_PACKAGES += \
     Updater
 endif
