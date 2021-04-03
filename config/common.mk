@@ -99,6 +99,7 @@ PRODUCT_PACKAGES += \
 # Themes
 PRODUCT_PACKAGES += \
     ThemePicker \
+    OmniStyle \
     OmniJaws
 
 # Updater
