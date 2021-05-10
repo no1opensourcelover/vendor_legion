@@ -2,7 +2,7 @@
 # Author: kNIGHT
 
 TOKEN="1862128467:AAG7RZ-zs7ivFa4BgGsgPv6BOS4kFuYSTgw"
-CHATID="-1001372077062"
+CHATID="-1001208308421"
 PHOTO="banner.jpg"
 read -r -p $'\n\e[36mEnter device name : \e[0m' device
 read -r -p $'\n\e[36mEnter LegionOS Version : \e[0m' legv
