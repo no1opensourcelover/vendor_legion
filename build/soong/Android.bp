@@ -507,7 +507,7 @@ inputdispatcher_skip_event_key {
 soong_config_module_type {
     name: "force_build_fingerprint",
     module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
+    config_namespace: "legionGlobalVars",
     value_variables: ["force_build_fingerprint"],
     properties: [
         "cppflags"
