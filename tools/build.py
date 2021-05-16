@@ -2,55 +2,15 @@
 import os
 from os import path
 
-# Banner
-print ("")
-print ("")
-print ("")
-print("""
-╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━━━┳━━━╮
-┃╭━╮┃╱╱╱╱╭╮╱╱╱╱╭╯╰╮╱┃┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱┃╭━╮┃╭━╮┃
-┃╰━╯┣━┳━━╋╋━━┳━┻╮╭╯╱┃┃╱╱╭━━┳━━┳┳━━┳━╮┃┃╱┃┃╰━━╮
-┃╭━━┫╭┫╭╮┣┫┃━┫╭━┫┣━━┫┃╱╭┫┃━┫╭╮┣┫╭╮┃╭╮┫┃╱┃┣━━╮┃
-┃┃╱╱┃┃┃╰╯┃┃┃━┫╰━┫╰┳━┫╰━╯┃┃━┫╰╯┃┃╰╯┃┃┃┃╰━╯┃╰━╯┃
-╰╯╱╱╰╯╰━━┫┣━━┻━━┻━╯╱╰━━━┻━━┻━╮┣┻━━┻╯╰┻━━━┻━━━╯
-╱╱╱╱╱╱╱╱╭╯┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱
-╱╱╱╱╱╱╱╱╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱""")
-print ("")
-print ("")
-print ("")
-print ("ONLY FOR OFFICIAL BUILDS/USE")
-print ("")
-print ("")
-print ("")
-
-# Variables
-os.system(". build/envsetup.sh")
-codename=input("\nEnter your device code name :- eg miatoll/laurel_sprout : \n")
-variant=input("\nEnter which variant you wanna build :- eg (vanilla/gapps): \n")
-name=(input("\nEnter your github name :- \n"))
-mail=(input("\nEnter the mail id linked with github :- \n"))
-
-# Variant
-if variant==gapps:
-    size=input("\nEnter you size of gapps :- (Full/Minimal)\n")
-    if size==Full:
-        os.system("export WITH_GAPPS=true")
-        os.system("export TARGET_INCLUDE_STOCK_GAPPS=true")
-    else:
-        os.system("export WITH_GAPPS=true")
-
-# BUilding
-os.system("lunch legion_%s-userdebug"%codename)
-os.system("make installclean")
-os.system("make legion")
-
 # Uploading
+def upload():
 sfun=input("\nEnter your sourceforge username :- \n")
 print("\nLogging you into our Sourceforge storage servers\n")
 print("\nRemember to press ctrl+z after uploading\n")
 os.system("sftp %s@frs.sourceforge.net"%sfun)
 
 # OTA
+def ota():
 print ("\nMoving to OTA repository\n")
 os.chdir("OTA")
 print("\nUnshallowing the repository\n")
@@ -79,8 +39,63 @@ if result==False:
     print("\nHey new maintainer!!! welcome to the Project LegionOS hope you have a great time here\n")
 else:
     print("\nContinuing the script....xd\n")
-    os.system("bash ota.sh %s %s %s %s"%(codename,variant,name,mail))
+    os.system("bash ota.sh %s %s"%(codename,variant))
     print ("")
+
+# Banner
+print ("")
+print ("")
+print ("")
+print("""
+╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━━━┳━━━╮
+┃╭━╮┃╱╱╱╱╭╮╱╱╱╱╭╯╰╮╱┃┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱┃╭━╮┃╭━╮┃
+┃╰━╯┣━┳━━╋╋━━┳━┻╮╭╯╱┃┃╱╱╭━━┳━━┳┳━━┳━╮┃┃╱┃┃╰━━╮
+┃╭━━┫╭┫╭╮┣┫┃━┫╭━┫┣━━┫┃╱╭┫┃━┫╭╮┣┫╭╮┃╭╮┫┃╱┃┣━━╮┃
+┃┃╱╱┃┃┃╰╯┃┃┃━┫╰━┫╰┳━┫╰━╯┃┃━┫╰╯┃┃╰╯┃┃┃┃╰━╯┃╰━╯┃
+╰╯╱╱╰╯╰━━┫┣━━┻━━┻━╯╱╰━━━┻━━┻━╮┣┻━━┻╯╰┻━━━┻━━━╯
+╱╱╱╱╱╱╱╱╭╯┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱
+╱╱╱╱╱╱╱╱╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱""")
+print ("")
+print ("")
+print ("")
+print ("ONLY FOR OFFICIAL BUILDS/USE")
+print ("")
+print ("")
+print ("")
+
+# Variables
+os.system(". build/envsetup.sh")
+os.system("make installclean")
+codename=input("\nEnter your device code name :- eg miatoll/laurel_sprout : \n")
+variant=input("\nEnter build flavour (vanilla/gapps) : \n")
+
+# Variant & Building & OTA
+if variant==gapps:
+    size=input("\nEnter you size of gapps :- (Full/Minimal)\n")
+    if size==Full:
+        os.system("export WITH_GAPPS=true")
+        os.system("export TARGET_INCLUDE_STOCK_GAPPS=true")
+        os.system("lunch legion_%s-userdebug"%codename)
+        os.system("make installclean")
+        os.system("make legion")
+        upload()
+        ota()
+    else:
+        os.system("export WITH_GAPPS=true")
+        os.system("export TARGET_INCLUDE_STOCK_GAPPS=false")
+        os.system("lunch legion_%s-userdebug"%codename)
+        os.system("make installclean")
+        os.system("make legion")
+        upload()
+        ota()
+
+os.system("export WITH_GAPPS=false")
+os.system("export TARGET_INCLUDE_STOCK_GAPPS=false")
+os.system("lunch legion_%s-userdebug"%codename)
+os.system("make installclean")
+os.system("make legion")
+upload()
+ota()
 
 # Telegram notification
 print("\nPosting in Telegram....\n")
