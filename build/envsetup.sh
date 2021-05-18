@@ -612,7 +612,13 @@ function lineagerebase() {
 }
 
 function mka() {
-    m -j "$@"
+    if [ "$1" = "signed-zip" ]; then
+        m -j target-files-package otatools
+        croot
+        source vendor/legion/scripts/sign.sh
+    else
+        m -j "$@"
+    fi
 }
 
 function cmka() {
