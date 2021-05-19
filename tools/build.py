@@ -91,7 +91,12 @@ ota()
 
 # Telegram notification
 print("\nPosting in Telegram....\n")
-os.system("bash tg.sh")
+codename=input("\nEnter your device code name :- eg miatoll/laurel\_sprout : ")
+tgun=input("\nPlease type your telegram username (without @) username or user\_name : ")
+device=input("\nEnter your device name (Xiaomi Mi A2) : ")
+legv=input("\nEnter LegionOS Verison(2.8/3.9) : ")
+patch=input("\nEnter security patch date (May 2021) :  ")
+os.system("bash tg.sh '%s' '%s' '%s' '%s' '%s'"%(device,legv,codename,patch,tgun))
 print("\nPosted in Telegram\n")
 print("\nExiting...\n")
 print("\nBye have a great day\n")
