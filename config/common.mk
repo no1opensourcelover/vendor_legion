@@ -96,6 +96,10 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_PACKAGES += \
     Terminal
 
+# GcamGoPrebuilt
+PRODUCT_PACKAGES += \
+    GCamGOPrebuilt
+
 # Themes
 PRODUCT_PACKAGES += \
     ThemePicker \
