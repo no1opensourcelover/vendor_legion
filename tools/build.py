@@ -78,16 +78,19 @@ print ("")
 # Variables
 codename=input("\nEnter your device code name :- eg miatoll/laurel_sprout : ")
 sfun=input("\nEnter your sourceforge username :-  ")
+sfpass=input("\nEnter your sourceforge password : ")
 variant=input("\nPlease type 'gapps' to confirm the build type to be built : ")
 btype=input("\nEnter the type of build u want [user/eng/userdebug] : ")
 
+# Deps
+os.system("sudo apt-get install sshpass -y")
 # Variant & Building & OTA
 os.system("bash build.sh %s true %s"%(codename,btype))
-os.system("rsync --progress -e ssh out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(codename,sfun,codename))
+os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
 variant=input("\nPlease type 'vanilla' to confirm the build type to be built :")
 os.system("bash build.sh %s false %s"%(codename,btype))
-os.system("rsync --progress -e ssh out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(codename,sfun,codename))
+os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
 
 # Telegram notification
