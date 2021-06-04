@@ -2,6 +2,7 @@
 
 # Imports
 import os
+import sys
 from os import path
 
 # OTA
@@ -64,6 +65,20 @@ print ("")
 
 # Variables
 codename=input("\nEnter your device code name :- eg miatoll/laurel_sprout : ")
+
+# Checks
+check1 = open("devices.json", "r")
+check2 = open("legion.devices", "r")
+store1 = check1.read()
+store2 = check2.read()
+if codename in store1:
+    if codename in store2:
+        print("\nChecks passed\n")
+else:
+    print("\nFor official devices only\n\nExiting.....\n")
+    sys.exit()
+
+# Variables
 sfun=input("\nEnter your sourceforge username :-  ")
 sfpass=input("\nEnter your sourceforge password : ")
 btype=input("\nEnter the type of build u want [user/eng/userdebug] : ")
