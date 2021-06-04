@@ -98,8 +98,13 @@ ota()
 
 # Telegram notification
 print("\nPosting in Telegram....\n")
-codename=input("\nEnter your device code name :- eg miatoll/laurel\_sprout : ")
-tgun=input("\nPlease type your telegram username (without @) username or user\_name : ")
+if "_" in codename:
+    b=codename.replace("_","\_")
+    codename=b
+tgun=input("\nPlease type your telegram username (without @) : ")
+if "_" in tgun:
+    c=tgun.replace("_","\_")
+    tgun=c
 device=input("\nEnter your device name (Xiaomi Mi A2) : ")
 legv=input("\nEnter LegionOS Verison(2.8/3.9) : ")
 patch=input("\nEnter security patch date (May 2021) :  ")
