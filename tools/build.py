@@ -1,21 +1,8 @@
-# Authored By : @https://tm.t/Immanuel_Raj
+# Authored By : @https://t.me/Immanuel_Raj
 
 # Imports
 import os
 from os import path
-
-sourceworker=input("\n Do you work with the source or just build? : ")
-if sourceworker=="build":
-    print("Hold Tight while we sync our sources")
-    os.system("repo init --depth=1 -u https://github.com/Project-LegionOS/manifest.git -b 11")
-    os.system("repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)")
-else:
-    print("Cleaning up the source a bit for you....")
-    os.system("rm -rf frameworks/base packages/apps/Settings packages/apps/LegionSettings vendor/legion")
-    print("Cleanups done xd...")
-    print("Now syncing the source for you..")
-    os.system("repo init --depth=1 -u https://github.com/Project-LegionOS/manifest.git -b 11")
-    os.system("repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)")
 
 # OTA
 def ota():
