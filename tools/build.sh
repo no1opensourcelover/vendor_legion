@@ -14,4 +14,4 @@ fi
 export WITH_GAPPS=$DECISION
 lunch legion_$DEVICE-$TYPE
 make installclean
-make legion
+make legion -j$(nproc --all)
