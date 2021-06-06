@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Authored By : @https://tm.t/Immanuel_Raj
+# Authored By : @https://t.me/Immanuel_Raj
 
 DEVICE=$1
 DECISION=$2
@@ -11,6 +11,8 @@ if [ $# -lt 3 ]; then
     exit 1
 fi
 
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
 export WITH_GAPPS=$DECISION
 lunch legion_$DEVICE-$TYPE
 make installclean
