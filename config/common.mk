@@ -249,3 +249,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Include Vendor Parts
 -include vendor/LegionParts/parts.mk
+
+# Inherit art options
+include vendor/legion/config/art.mk
