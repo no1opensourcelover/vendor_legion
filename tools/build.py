@@ -62,6 +62,7 @@ print ("ONLY FOR OFFICIAL BUILDS/USE")
 print ("")
 print ("")
 print ("")
+print ("Make sure to run username@frs.sourceforge.net once before using the script")
 
 # Variables
 codename=input("\nEnter your device code name :- eg miatoll/laurel_sprout : ")
@@ -78,13 +79,27 @@ else:
     print("\nFor official devices only\n\nExiting.....\n")
     sys.exit()
 
+# Deps
+depp=input("\nHave u installed sshpass? (yes/no) :")
+if depp=="yes":
+    print("\nCool lets continue\n")
+    pass
+else:
+    print("\nPlease consider installing it then run the program again\n")
+    sys.exit()
+
 # Variables
 sfun=input("\nEnter your sourceforge username :-  ")
 sfpass=input("\nEnter your sourceforge password : ")
 btype=input("\nEnter the type of build u want [user/eng/userdebug] : ")
-
-# Deps
-os.system("sudo apt-get install sshpass -y")
+tgun=input("\nPlease type your telegram username (without @) : ")
+if "_" in tgun:
+    c=tgun.replace("_","\_")
+    tgun=c
+device=input("\nEnter your device name (Xiaomi Mi A2) : ")
+legv=input("\nEnter LegionOS Verison(2.8/3.9) : ")
+patch=input("\nEnter security patch date (May 2021) :  ")
+print("")
 
 # Variant & Building & OTA
 variant=str("gapps")
@@ -101,13 +116,6 @@ print("\nPosting in Telegram....\n")
 if "_" in codename:
     b=codename.replace("_","\_")
     codename=b
-tgun=input("\nPlease type your telegram username (without @) : ")
-if "_" in tgun:
-    c=tgun.replace("_","\_")
-    tgun=c
-device=input("\nEnter your device name (Xiaomi Mi A2) : ")
-legv=input("\nEnter LegionOS Verison(2.8/3.9) : ")
-patch=input("\nEnter security patch date (May 2021) :  ")
 os.system("bash tg.sh '%s' '%s' '%s' '%s' '%s'"%(device,legv,codename,patch,tgun))
 print("\nPosted in Telegram\n")
 print("\nExiting...\n")
