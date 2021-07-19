@@ -3,6 +3,7 @@
 # Imports
 import os
 import sys
+import subprocess
 from os import path
 
 # Check out dir for file's existence
@@ -94,9 +95,10 @@ else:
     sys.exit()
 
 # Deps
-depp=input("\nHave u installed sshpass? (yes/no) :")
-if depp=="yes":
-    print("\nCool lets continue\n")
+print("\nChecking if sshpass is already installed")
+depp = subprocess.check_output(['apt', 'list', '--installed', 'sshpass'])
+if "sshpass" in str(depp):
+    print("Cool, sshpass is installed so lets continue\n")
     pass
 else:
     print("\nPlease consider installing it then run the program again\n")
