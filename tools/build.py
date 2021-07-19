@@ -5,6 +5,20 @@ import os
 import sys
 from os import path
 
+# Check out dir for file's existence
+def checkout():
+    os.chdir("out/target/product/%s"%codename)
+    print("")
+    findf=os.system("find LegionOS*.zip")
+    res=path.exists(findf)
+    if res==False:
+        print("\nFile Not found in out folder there maybee some build errros\n")
+        print("\nDo check for errors and rebuild\n")
+        sys.exit()
+    else:
+        os.chdir("../../../..")
+        print("\nOutput file found continuing to upload the file\n")
+
 # OTA
 def ota():
     print ("\nMoving to OTA repository\n")
@@ -104,10 +118,12 @@ print("")
 # Variant & Building & OTA
 variant=str("gapps")
 os.system("bash build.sh %s true %s"%(codename,btype))
+checkout()
 os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
 variant=str("vanilla")
 os.system("bash build.sh %s false %s"%(codename,btype))
+checkout()
 os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
 
