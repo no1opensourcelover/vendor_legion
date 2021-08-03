@@ -212,7 +212,7 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/legion/overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/legion/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/legion/overlay/common
 
 #Uncatogerised
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
