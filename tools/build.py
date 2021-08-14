@@ -25,6 +25,8 @@ def ota():
     print ("\nMoving to OTA repository\n")
     os.chdir("OTA")
     print("\nUnshallowing the repository\n")
+    if ghun!="IMMANUEL44" or "rajkale99" or "anonhacker47" or "lucasponez" or "CrisBalGreece":
+        os.system("git remote add LegionOS-Devices https://github.com/%s/OTA"%ghun)
     os.system("git fetch LegionOS-Devices --unshallow")
     os.system("git checkout 11")
     os.system("git pull LegionOS-Devices 11")
@@ -109,6 +111,7 @@ sfun=input("\nEnter your sourceforge username :-  ")
 sfpass=input("\nEnter your sourceforge password : ")
 btype=input("\nEnter the type of build u want [user/eng/userdebug] : ")
 tgun=input("\nPlease type your telegram username (without @) : ")
+ghun=input("\nEnter your Github username :-  ")
 if "_" in tgun:
     c=tgun.replace("_","\_")
     tgun=c
