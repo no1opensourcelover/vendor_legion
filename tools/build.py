@@ -112,6 +112,7 @@ sfpass=input("\nEnter your sourceforge password : ")
 btype=input("\nEnter the type of build u want [user/eng/userdebug] : ")
 tgun=input("\nPlease type your telegram username (without @) : ")
 ghun=input("\nEnter your Github username :-  ")
+kbu=input("\nEnter name for KBUILD_BUILD_USER :- ")
 if "_" in tgun:
     c=tgun.replace("_","\_")
     tgun=c
@@ -122,12 +123,12 @@ print("")
 
 # Variant & Building & OTA
 variant=str("gapps")
-os.system("bash build.sh %s true %s"%(codename,btype))
+os.system("bash build.sh %s true %s %s"%(codename,btype,kbu))
 checkout()
 os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
 variant=str("vanilla")
-os.system("bash build.sh %s false %s"%(codename,btype))
+os.system("bash build.sh %s false %s %s"%(codename,btype,kbu))
 checkout()
 os.system("sshpass -p '%s' rsync --progress out/target/product/%s/LegionOS*.zip %s@frs.sourceforge.net:/home/frs/project/legionrom/%s/"%(sfpass,codename,sfun,codename))
 ota()
