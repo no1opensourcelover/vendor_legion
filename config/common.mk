@@ -107,7 +107,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ThemePicker \
     OmniStyle \
-    OmniJaws
+    OmniJaws  \
+    GamingMode
 
 # Updater
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
