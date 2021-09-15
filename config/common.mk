@@ -110,6 +110,9 @@ PRODUCT_PACKAGES += \
     OmniJaws  \
     GamingMode
 
+PRODUCT_COPY_FILES += \
+    vendor/legion/prebuilt/common/etc/init/init.performance_level.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.performance_level.rc
+
 # Updater
 ifeq ($(LEGION_BUILD_TYPE), OFFICIAL)
 
